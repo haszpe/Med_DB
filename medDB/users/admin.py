@@ -17,7 +17,3 @@ admin.site.register(Experiments)
 admin.site.register(KeyWords)
 admin.site.register(Protocols)
 admin.site.register(Patients)
-
-
-
-
