@@ -1,18 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from .forms import LoginForm
 from django.http import HttpResponse
-from .models import Employees
-
-# def welcome_view(request):
-#     message = '<h1>Welcome to Users</h1>'
-#     return HttpResponse(message)
 
 
-def french_view(request, *args, **kwargs):
-    return render(request, "base.html")
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect('home')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
 
 
-def testing(request):
-    all_employees = Employees.objects.all()
-    context = {'all_employees': all_employees}
+def home(request):
+    message = "<h1>Welcome to the app of Medical Data Base!</h1>"
+    return HttpResponse(message)
 
-    return render(request, 'base.html', context)
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
