@@ -8,7 +8,7 @@ In order to run properly create conda env using file med_env.yaml
 ```
 conda env create --file med_env.yaml
 ```
-Then to run server run:
+Then to run django server:
 
 ```
 python manage.py runserver
