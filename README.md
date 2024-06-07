@@ -15,5 +15,5 @@ python manage.py runserver
 ```
 
 
-Django 5.0.3
-Python 3.10.12
+- Django 5.0.3
+- Python 3.10.12
