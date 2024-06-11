@@ -6,6 +6,9 @@ from django.http import HttpResponse
 from .models import Employees
 from django.shortcuts import render
 
+def first_page(request):
+    return render(request, 'first_page.html')
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)

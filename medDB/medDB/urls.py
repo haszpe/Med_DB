@@ -19,6 +19,7 @@ from django.urls import path, include       #include jest dodane, ma się przyda
 from users import views
 
 urlpatterns = [
+    path("", views.first_page, name='first_page'),
     path("admin/", admin.site.urls),
     path("login/", views.user_login, name='login'),
     path("home/", views.home, name='home'),
