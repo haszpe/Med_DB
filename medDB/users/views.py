@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
 from django.http import HttpResponse
-
+# for users listing
+from .models import Employees
+from django.shortcuts import render
 
 def user_login(request):
     if request.method == 'POST':
@@ -27,3 +29,8 @@ def home(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+def list_employee(request):
+    all_employees = Employees.objects.all()
+    context = {'all_employees': all_employees}  # Create context dictionary
+    return render(request, 'list_employee.html', context)
