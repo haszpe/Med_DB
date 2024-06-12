@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from .models import Employees
 from django.shortcuts import render
 
-def first_page(request):
-    return render(request, 'first_page.html')
+def home(request):
+    return render(request, 'home.html')
 
 def user_login(request):
     if request.method == 'POST':
@@ -22,11 +22,6 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
-
-
-def home(request):
-    message = "<h1>Welcome to the app of Medical Data Base!</h1>"
-    return HttpResponse(message)
 
 
 def user_logout(request):
