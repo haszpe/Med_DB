@@ -29,7 +29,12 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
+# def list_employee(request):
+#     all_employees = Employees.objects.all()
+#     context = {'all_employees': all_employees}  # Create context dictionary
+#     return render(request, 'list_employee.html', context)
 def list_employee(request):
-    all_employees = Employees.objects.all()
-    context = {'all_employees': all_employees}  # Create context dictionary
+    search_query = request.GET.get('search', '')
+    all_employees = Employees.objects.filter(surname__icontains=search_query)
+    context = {'all_employees': all_employees}
     return render(request, 'list_employee.html', context)
