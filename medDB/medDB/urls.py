@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include       #include jest dodane, ma się przydać w przyszłości
 from users import views
+#from views import home, list_employee, user_login, user_logout
 
 urlpatterns = [
     path("", views.home, name='home'),
