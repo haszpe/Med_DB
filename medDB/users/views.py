@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 # for users listing
 from .models import Employees
 from django.shortcuts import render
+from .forms import AddEmployee
 
 
 def home(request):
@@ -38,3 +39,17 @@ def list_employee(request):
     all_employees = Employees.objects.filter(surname__icontains=search_query)
     context = {'all_employees': all_employees}
     return render(request, 'list_employee.html', context)
+
+
+def add_employee(request):
+    submitted = False
+    if request.method == 'POST':
+        form = AddEmployee(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_employee?submitted=True')
+    else:
+        form = AddEmployee
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'add_employee.html', {'form' : form, 'submitted' : submitted})

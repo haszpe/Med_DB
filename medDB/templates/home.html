@@ -2,23 +2,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>First Page</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  <meta charset="UTF-8">
+  <title>First Page</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
+
 <body>
-    <h1>Welcome to MedDB a medical database for you!</h1>
+  <h1>Welcome to MedDB a medical database for you!</h1>
 
-    <div class="dropdown">
-  <button class="dropbtn">Menu</button>
-  <div class="dropdown-content">
-    <a href="login/">Login</a>
-    <a href="list_employee/">List users</a>
-    <a href="admin/">admin (hannapeciak)</a>
+  <div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+      <a href="login/">Login</a>
+      <a href="list_employee/">List users</a>
+      <a href="admin/">admin (hannapeciak)</a>
+      <a href="add_employee/">Add Employee data</a>
+    </div>
   </div>
-</div>
 
-    <img src="{% static 'images/first_page.jpg' %}" alt="Medical Research">
+  <img src="{% static 'images/first_page.jpg' %}" alt="Medical Research">
 </body>
+
 </html>
