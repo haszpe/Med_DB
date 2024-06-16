@@ -1,22 +1,46 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class Laboratory(models.Model):
     name = models.CharField(max_length=50)
     adress = models.CharField(max_length=50)
 
 
-class Employees(models.Model):
-    first_name = models.CharField(max_length=100)
-    sec_name = models.CharField(max_length=100)
-    surname = models.CharField(max_length=100)
-    employee_login = models.CharField(max_length=100)
-    employee_password = models.CharField(max_length=100)
-    mail = models.CharField(max_length=100)
-    pesel = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=100)
-    laboratory = models.ForeignKey(Laboratory, on_delete=models.CASCADE)
+class EmployeeManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self.create_user(username, email, password, **extra_fields)
+
+class Employees(AbstractUser):
+    first_name = models.CharField(max_length=100)
+    sec_name = models.CharField(max_length=100, blank=True, null=True)
+    surname = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    pesel = models.CharField(max_length=100, blank=True, null=True)
+    phone_number = models.CharField(max_length=100)
+    laboratory = models.ForeignKey(Laboratory, on_delete=models.CASCADE, blank=True, null=True)
+    REQUIRED_FIELDS = ['first_name', 'sec_name', 'surname', 'email',
+                       'pesel', 'phone_number']
+    objects = EmployeeManager()
+
+    def __str__(self):
+        return self.username
 
 class Project(models.Model):
     project_name = models.CharField(max_length=50)

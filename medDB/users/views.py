@@ -1,11 +1,7 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm
-from django.http import HttpResponse, HttpResponseRedirect
-# for users listing
+from django.http import HttpResponseRedirect
 from .models import Employees
 from django.shortcuts import render
-from .forms import AddEmployee, AddLaboratory, AddExperiment, AddKeyWord,AddPatient,AddProject,AddProtocol,AddResult
+from .forms import AddLaboratory, AddExperiment, AddKeyWord,AddPatient,AddProject,AddProtocol,AddResult
 
 
 def home(request):
@@ -33,18 +29,18 @@ def add_laboratory(request):
     return render(request, 'add_templates/add_laboratory.html', {'form': form, 'submitted': submitted})
 
 
-def add_employee(request):
-    submitted = False
-    if request.method == 'POST':
-        form = AddEmployee(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('add_templates/add_employee?submitted=True')
-    else:
-        form = AddEmployee
-        if 'submitted' in request.GET:
-            submitted = True
-    return render(request, 'add_templates/add_employee.html', {'form' : form, 'data' : submitted})
+# def add_employee(request):
+#     submitted = False
+#     if request.method == 'POST':
+#         form = AddEmployee(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('add_templates/add_employee?submitted=True')
+#     else:
+#         form = AddEmployee
+#         if 'submitted' in request.GET:
+#             submitted = True
+#     return render(request, 'add_templates/add_employee.html', {'form' : form, 'data' : submitted})
 
 
 def add_project(request):
