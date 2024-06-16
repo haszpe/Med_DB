@@ -11,34 +11,13 @@ from .forms import AddEmployee, AddLaboratory, AddExperiment, AddKeyWord,AddPati
 def home(request):
     return render(request, 'home.html')
 
-def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect('home')
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
 
-
-def user_logout(request):
-    logout(request)
-    return redirect('login')
-
-# def list_employee(request):
-#     all_employees = Employees.objects.all()
-#     context = {'all_employees': all_employees}  # Create context dictionary
-#     return render(request, 'list_employee.html', context)
 def list_employee(request):
     search_query = request.GET.get('search', '')
     all_employees = Employees.objects.filter(surname__icontains=search_query)
     context = {'all_employees': all_employees}
     return render(request, 'list_employee.html', context)
+
 
 def add_laboratory(request):
     submitted = False
@@ -67,6 +46,7 @@ def add_employee(request):
             submitted = True
     return render(request, 'add_templates/add_employee.html', {'form' : form, 'data' : submitted})
 
+
 def add_project(request):
     submitted = False
     if request.method == 'POST':
@@ -79,6 +59,7 @@ def add_project(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'add_templates/add_project.html', {'form': form, 'submitted': submitted})
+
 
 def add_experiment(request):
     submitted = False
@@ -93,6 +74,7 @@ def add_experiment(request):
             submitted = True
     return render(request, 'add_templates/add_experiment.html', {'form': form, 'submitted': submitted})
 
+
 def add_result(request):
     submitted = False
     if request.method == 'POST':
@@ -105,6 +87,7 @@ def add_result(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'add_templates/add_result.html', {'form': form, 'submitted': submitted})
+
 
 def add_key_word(request):
     submitted = False
@@ -119,6 +102,7 @@ def add_key_word(request):
             submitted = True
     return render(request, 'add_templates/add_key_word.html', {'form': form, 'submitted': submitted})
 
+
 def add_protocol(request):
     submitted = False
     if request.method == 'POST':
@@ -132,6 +116,7 @@ def add_protocol(request):
             submitted = True
     return render(request, 'add_templates/add_protocol.html', {'form': form, 'submitted': submitted})
 
+
 def add_patient(request):
     submitted = False
     if request.method == 'POST':
@@ -144,6 +129,7 @@ def add_patient(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'add_templates/add_patient.html', {'form': form, 'submitted': submitted})
+
 
 def add_all(request):
     return render(request, 'add_all.html')

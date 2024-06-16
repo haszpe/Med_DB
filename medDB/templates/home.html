@@ -9,6 +9,15 @@
   <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
 
+{% block content %}
+{% if user.is_authenticated %}
+  Welcome {{ user.username }}!
+    <a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+    <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+
 <body>
   <h1>Welcome to MedDB a medical database for you!</h1>
 

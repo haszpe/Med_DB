@@ -2,10 +2,6 @@ from django import forms
 from .models import Laboratory,Employees,Project,Experiments,Results,KeyWords,Protocols, Patients
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-
 class AddLaboratory(forms.ModelForm):
     class Meta:
         model = Laboratory
