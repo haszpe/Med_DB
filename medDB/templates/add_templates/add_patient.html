@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <title>Add Employee</title>
+    <title>Add Patient</title>
 </head>
 
 <head>
     <meta charset="UTF-8">
-    <title>Create Employee</title>
+    <title>Create Patient</title>
 </head>
 
 {% if submitted %}
-Yey
+You have submitted siccesfully
 {%else%}
 
 <body>
-    <h1>Create Employee</h1>
+    <h1>Create Patient</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

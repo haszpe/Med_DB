@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #f4f4f4;
+            /* Match background color of the body */
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            /* Align items to the left */
+            align-items: center;
+        }
+
+        .home-button {
+            background-color: #28a745;
+            /* Green background color for the button */
+            color: white;
+            padding: 8px 16px;
+            /* Adjust padding as needed */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            /* Smooth transition on hover */
+        }
+
+        .home-button:hover {
+            background-color: #218838;
+            /* Darker shade of green on hover */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            /* Center items horizontally */
+            align-items: center;
+            /* Center items vertically */
+            max-width: 900px;
+            /* Adjust max-width as needed */
+            margin: 20px auto;
+            /* Center the container horizontally with margin */
+            padding: 20px;
+            /* Add padding around the container */
+            background-color: white;
+            /* White background color for the content area */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tile {
+            width: 150px;
+            height: 150px;
+            background-color: #007BFF;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .tile:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="/" class="home-button">Home</a>
+    </div>
+
+    <div class="container">
+        <a href="{% url 'add_employee' %}" class="tile">Add Employee</a>
+        <a href="{% url 'add_experiment' %}" class="tile">Add Experiment</a>
+        <a href="{% url 'add_key_word' %}" class="tile">Add Key Word</a>
+        <a href="{% url 'add_laboratory' %}" class="tile">Add Laboratory</a>
+        <a href="{% url 'add_patient' %}" class="tile">Add Patient</a>
+        <a href="{% url 'add_project' %}" class="tile">Add Project</a>
+        <a href="{% url 'add_protocol' %}" class="tile">Add Protocol</a>
+        <a href="{% url 'add_result' %}" class="tile">Add Result</a>
+    </div>
+</body>
+
+</html>
