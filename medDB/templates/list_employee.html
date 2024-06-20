@@ -4,19 +4,21 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>List of Employees</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}" type="text/css">
     <style>
-        body {
-            background-image: url("{% static 'images/background.jpg' %}");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-color: rgba(0, 0, 0, 0.1);
-            background-blend-mode: multiply;
-            z-index: -1;
-
-
+        .search-form {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            margin: auto;
+        }
+        input[name="search"] {
+            width: 100%;
         }
     </style>
 </head>
@@ -24,12 +26,12 @@
 <body>
 
     <h1>List of Employees</h1>
-     <a href="{% url 'home' %}">Home</a>
-    <form method="GET" action="">
-    <input type="text" name="search" placeholder="Search employees (sec name)">
-    <input type="submit" value="Search">
-</form>
-    <table>
+    <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+    <div class="search-form form-group">
+        <input type="text" name="search" placeholder="Search employees (Second Name)" class="form-control">
+        <input type="submit" value="Search" class="btn btn-success">
+    </div>
+    <table class="table">
         <thead>
             <tr>
                 <th>First Name</th>
