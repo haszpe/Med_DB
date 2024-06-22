@@ -1,5 +1,6 @@
 from django import forms
-from .models import Laboratory,Employees,Project,Experiments,Results,KeyWords,Protocols, Patients
+from django.contrib.auth.forms import UserCreationForm
+from .models import Laboratory, Employees, Project, Experiments, Results, KeyWords, Protocols, Patients
 
 
 class AddLaboratory(forms.ModelForm):
@@ -15,31 +16,32 @@ class AddLaboratory(forms.ModelForm):
             "adress": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'})
         }
 
-# class AddEmployee(forms.ModelForm):
-#     class Meta:
-#         model = Employees
-#         fields = ("first_name", "sec_name", "surname",
-#                    "employee_login", "employee_password",
-#                    "mail", "pesel", "phone_number", "laboratory")
-#         labels = {
-#         "first_name": "",
-#         "sec_name": "",
-#         "surname": "",
-#         "employee_login": "",
-#         "employee_password": "",
-#         "mail": "",
-#         "pesel": "",
-#         "phone_number": "",
-#         "laboratory": ""}
-#         widgets = {"first_name": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'First Name'}),
-#             "sec_name": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Second Name'}),
-#             "surname": forms.TextInput(attrs={'class' : 'form-control','placeholder' : 'Last Name'}),
-#             "employee_login": forms.TextInput(attrs={'class' : 'form-control','placeholder' : 'Account login'}),
-#             "employee_password": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Account Password'}),
-#             "mail": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'E-mail adress'}),
-#             "pesel": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'PESEL number'}),
-#             "phone_number": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Phone number'}),
-#             "laboratory": forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Laboratory'})}
+
+class EmployeeRegistration(UserCreationForm):
+    class Meta:
+        model = Employees
+        fields = ['username', 'first_name', 'sec_name', 'surname', 'email', 'pesel',
+                  'phone_number', 'password1', 'password2']
+        labels = {"first_name": "",
+                  "sec_name": "",
+                  "surname": "",
+                  "employee_login": "",
+                  "employee_password": "",
+                  "mail": "",
+                  "pesel": "",
+                  "phone_number": "",
+                  "laboratory": ""}
+        widgets = {"first_name": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+                   "sec_name": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Second Name'}),
+                   "surname": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
+                   "employee_login": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Account login'}),
+                   "employee_password": forms.TextInput(
+                       attrs={'class': 'form-control', 'placeholder': 'Account Password'}),
+                   "mail": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'E-mail adress'}),
+                   "pesel": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'PESEL number'}),
+                   "phone_number": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number'}),
+                   "laboratory": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Laboratory'})}
+
 
 class AddProject(forms.ModelForm):
     class Meta:
@@ -60,6 +62,7 @@ class AddProject(forms.ModelForm):
             "teamleader_employee_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Team Leader'})
         }
 
+
 class AddExperiment(forms.ModelForm):
     class Meta:
         model = Experiments
@@ -77,9 +80,11 @@ class AddExperiment(forms.ModelForm):
             "start_date": forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Start Date'}),
             "status": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Status'}),
             "end_date": forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'End Date'}),
-            "results_description": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Results Description'}),
+            "results_description": forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Results Description'}),
             "project_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Project'})
         }
+
 
 class AddResult(forms.ModelForm):
     class Meta:
@@ -93,6 +98,7 @@ class AddResult(forms.ModelForm):
             "filename": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Filename'}),
             "experiment_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Experiment'})
         }
+
 
 class AddKeyWord(forms.ModelForm):
     class Meta:
@@ -109,6 +115,7 @@ class AddKeyWord(forms.ModelForm):
             "experiment_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Experiment'})
         }
 
+
 class AddProtocol(forms.ModelForm):
     class Meta:
         model = Protocols
@@ -121,6 +128,7 @@ class AddProtocol(forms.ModelForm):
             "protocol_name": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Protocol Name'}),
             "experiment_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Experiment'})
         }
+
 
 class AddPatient(forms.ModelForm):
     class Meta:
@@ -148,4 +156,3 @@ class AddPatient(forms.ModelForm):
             "group": forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Group'}),
             "experiment_id": forms.Select(attrs={'class': 'form-control', 'placeholder': 'Experiment'})
         }
-

@@ -1,4 +1,4 @@
-# Medical Data Base
+# Dropped branch - forgotten approach
 
 Based on Django. 
 
@@ -17,3 +17,11 @@ python manage.py runserver
 
 - Django 5.0.3
 - Python 3.10.12
+
+
+
+
+https://stackoverflow.com/questions/54083249/are-permissionsmixin-and-permissionrequiredmixin-the-same
+https://docs.djangoproject.com/en/dev/topics/auth/customizing/#django.contrib.auth.models.PermissionsMixin
+
+https://stackoverflow.com/questions/55101750/omitting-password-field-for-custom-django-user-model

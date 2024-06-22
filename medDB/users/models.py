@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class Laboratory(models.Model):
     name = models.CharField(max_length=50)
@@ -27,7 +27,9 @@ class EmployeeManager(BaseUserManager):
 
         return self.create_user(username, email, password, **extra_fields)
 
-class Employees(AbstractUser):
+
+class Employees(AbstractBaseUser):
+    username = models.CharField(max_length=100, unique=True)
     first_name = models.CharField(max_length=100)
     sec_name = models.CharField(max_length=100, blank=True, null=True)
     surname = models.CharField(max_length=100)
@@ -39,8 +41,17 @@ class Employees(AbstractUser):
                        'pesel', 'phone_number']
     objects = EmployeeManager()
 
+    USER_TYPE_CHOICES = (('employee', 'Employee'),
+                         ('teamlead', 'Teamlead'))
+    user_type = models.CharField(max_length=20, default='employee', choices=USER_TYPE_CHOICES)
+
     def __str__(self):
         return self.username
+
+
+    def is_teamlead(self):
+        return self.user_type == 'teamlead'
+
 
 class Project(models.Model):
     project_name = models.CharField(max_length=50)

@@ -15,14 +15,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include       #include jest dodane, ma się przydać w przyszłości
+from django.urls import path, include
 from users import views
-#from views import home, list_employee, user_login, user_logout
 
 urlpatterns = [
     path("", views.home, name='home'),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("register/", views.register_employee, name='register'),
     path("list_employee/", views.list_employee, name='list_employee'),
     path("add_laboratory/", views.add_laboratory, name='add_laboratory'),
     # path("add_employee/", views.add_employee, name='add_employee'),
