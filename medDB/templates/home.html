@@ -1,35 +1,9 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Home{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>First Page</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-
- <style>
-    .dropbtn {
-        border-radius: 7px;
-    }
-  </style>
-
-</head>
-
-<body>
-  <h1>Welcome to MedDB a medical database for you!</h1>
-
-  <div class="dropdown">
-    <button class="dropbtn">Menu</button>
-    <div class="dropdown-content">
-      <a href="login/">Login</a>
-      <a href="list_employee/">List users</a>
-      <a href="add_all/">Add Data</a>
-      <a href="admin/">admin (hannapeciak)</a>
-    </div>
-  </div>
-
-  <img src="{% static 'images/first_page.jpg' %}" alt="Medical Research">
-</body>
-
-</html>
+{% block content %}
+{% if user.is_authenticated %}
+You are logged in as user: {{ user.username }}!
+{% endif %}
+{% endblock %}

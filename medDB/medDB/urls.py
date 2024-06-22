@@ -22,8 +22,7 @@ from users import views
 urlpatterns = [
     path("", views.home, name='home'),
     path("admin/", admin.site.urls),
-    path("login/", views.user_login, name='login'),
-    path("logout/", views.user_logout, name='logout'),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("list_employee/", views.list_employee, name='list_employee'),
     path("add_laboratory/", views.add_laboratory, name='add_laboratory'),
     path("add_employee/", views.add_employee, name='add_employee'),
