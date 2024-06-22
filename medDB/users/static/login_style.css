@@ -35,8 +35,7 @@ input {
 	outline: none;
 	padding: 10px;
 	font-size: 13px;
-	color: #fff;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	color: black;
 	border: 1px solid rgba(0,0,0,0.3);
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
@@ -49,4 +48,5 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     height:45px;
     font-size:15px;
     border-radius:3px;
+    cursor:pointer;
 }

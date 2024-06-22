@@ -12,6 +12,23 @@
     .dropbtn {
         border-radius: 7px;
     }
+     .dropdown{
+         position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+     }
+     .logoutbtn{
+      background-color: red;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius:7px;
+     }
+
   </style>
 
 </head>
@@ -21,13 +38,19 @@
 {% endblock %}
   <h1>Welcome to MedDB a medical database for you!</h1>
   <div class="dropdown">
+
     <button class="dropbtn">Menu</button>
     <div class="dropdown-content">
       <a href="accounts/login/">Login</a>
       <a href="admin/">Admin page (hannapeciak)</a>
+
       {% block auth %}
       {% endblock %}
+
     </div>
+      {% block logout %}
+      {% endblock %}
+
   </div>
 
   <img src="{% static 'images/first_page.jpg' %}" alt="Medical Research">

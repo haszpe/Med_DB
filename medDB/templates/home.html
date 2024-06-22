@@ -14,3 +14,12 @@ You are logged in as user: {{ user.username }}!
       <a href="add_all/">Add Data</a>
 {% endif %}
 {% endblock %}
+
+{% block logout %}
+{% if user.is_authenticated %}
+<form  action="{% url 'logout' %}"  method="post">
+          {% csrf_token %}
+    <button class='logoutbtn' type="submit">Log Out</button>
+</form>
+{% endif %}
+{% endblock %}
