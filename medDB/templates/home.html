@@ -7,3 +7,10 @@
 You are logged in as user: {{ user.username }}!
 {% endif %}
 {% endblock %}
+
+{% block auth %}
+{% if user.is_authenticated %}
+      <a href="list_employee/">List users</a>
+      <a href="add_all/">Add Data</a>
+{% endif %}
+{% endblock %}
