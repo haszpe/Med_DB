@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Django Project Homepage</title>
-    <link rel="stylesheet" href="{% static 'style_login.css' %}" type= "text/css" >
+    <link rel="stylesheet" href="{% static 'login_style.css' %}" type="text/css" >
     </head>
 <body>
 
@@ -14,7 +14,7 @@
     <form method="post">
     	  {% csrf_token %}
           {{ form }}
-        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in!</button>
+        <button type="submit" class="login_button">Let me in!</button>
     </form>
 </div>
 
