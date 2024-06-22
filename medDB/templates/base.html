@@ -34,11 +34,10 @@
 </head>
 
 <body>
-{% block content %}
-{% endblock %}
   <h1>Welcome to MedDB a medical database for you!</h1>
+    {% block content %}
+    {% endblock %}
   <div class="dropdown">
-
     <button class="dropbtn">Menu</button>
     <div class="dropdown-content">
       <a href="accounts/login/">Login</a>
