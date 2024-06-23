@@ -8,45 +8,25 @@
   <title>{% block title %} First Page {% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 
- <style>
-    .dropbtn {
-        border-radius: 7px;
-    }
-     .dropdown{
-         position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-     }
-     .logoutbtn{
-      background-color: red;
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      border-radius:7px;
-     }
-
-  </style>
-
 </head>
 
 <body>
   <h1>Welcome to MedDB a medical database for you!</h1>
     {% block content %}
     {% endblock %}
+
+  <div class="menu_buttons">
   <div class="dropdown">
     <button class="dropbtn">Menu</button>
-    <div class="dropdown-content">
+        <div class="dropdown-content">
       {% block auth %}
       {% endblock %}
-
-    </div>
-      {% block logout %}
-      {% endblock %}
-
+        </div>
+  </div>
+  <div class="logout">
+    {% block logout %}
+    {% endblock %}
+  </div>
   </div>
 
   <img src="{% static 'images/first_page.jpg' %}" alt="Medical Research">
