@@ -4,10 +4,8 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <title>List of Employees</title>
     <style>
@@ -20,16 +18,38 @@
         input[name="search"] {
             width: 100%;
         }
+        .home-button {
+            margin-left: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            text-decoration:none;
+            color:white;
+            background-color: #218838
+        }
+        .searchbtn{
+            background-color: #007BFF;
+            padding: 5px 10px 5px 10px;
+            border: 0;
+            border-radius: 4px;
+            margin-left:10px;
+            color:white
+        }
     </style>
 </head>
 
 <body>
 
     <h1>List of Employees</h1>
-    <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+    <a href="{% url 'home' %}" class="home-button">Home</a>
     <div class="search-form form-group">
         <input type="text" name="search" placeholder="Search employees (Second Name)" class="form-control">
-        <input type="submit" value="Search" class="btn btn-success">
+        <input type="submit" value="Search" class="searchbtn">
     </div>
     <table class="table">
         <thead>
